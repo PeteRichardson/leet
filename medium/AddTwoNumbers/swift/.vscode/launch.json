@@ -1,0 +1,34 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Launch",
+            "program": "${workspaceFolder}/.build/debug/AddTwonumbers",
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug AddTwoNumbers",
+            "program": "${workspaceFolder:swift}/.build/debug/AddTwoNumbers",
+            "args": [],
+            "cwd": "${workspaceFolder:swift}",
+            "preLaunchTask": "swift: Build Debug AddTwoNumbers"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Release AddTwoNumbers",
+            "program": "${workspaceFolder:swift}/.build/release/AddTwoNumbers",
+            "args": [],
+            "cwd": "${workspaceFolder:swift}",
+            "preLaunchTask": "swift: Build Release AddTwoNumbers"
+        }
+    ]
+}
