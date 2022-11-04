@@ -1,0 +1,22 @@
+{
+    "configurations": [
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug RomanToInteger",
+            "program": "${workspaceFolder:swift}/.build/debug/RomanToInteger",
+            "args": [],
+            "cwd": "${workspaceFolder:swift}",
+            "preLaunchTask": "swift: Build Debug RomanToInteger"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Release RomanToInteger",
+            "program": "${workspaceFolder:swift}/.build/release/RomanToInteger",
+            "args": [],
+            "cwd": "${workspaceFolder:swift}",
+            "preLaunchTask": "swift: Build Release RomanToInteger"
+        }
+    ]
+}
