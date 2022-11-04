@@ -21,5 +21,5 @@ void test(string s, string p) {
 int main(int argc, char** argv) {
     bool test_result = false;
     
-    test("fooAnythingHere", "foo.*");
+    test("", "a*");
 }

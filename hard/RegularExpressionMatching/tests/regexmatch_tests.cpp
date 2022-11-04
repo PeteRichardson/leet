@@ -24,6 +24,10 @@ TEST(DirectMatch, PatternLength) {
     EXPECT_FALSE(sol.isMatch("foo", "fo"));
 }
 
+TEST(DirectMatch, SingleChar) {
+    EXPECT_TRUE(sol.isMatch("a", "a"));
+}
+
 TEST(DirectMatch, StringLength) {
     EXPECT_FALSE(sol.isMatch("fooo", "foo"));
     EXPECT_FALSE(sol.isMatch("fo",   "foo"));
@@ -58,6 +62,7 @@ TEST(Asterisk, Single) {
 }
 
 TEST(Asterisk, Multiple) {
-    //EXPECT_TRUE(sol.isMatch("foo", "b*.*"));
-    //EXPECT_TRUE(sol.isMatch("foo", "a*b*.*"));
+    EXPECT_TRUE(sol.isMatch("foo", "b*.*"));
+    EXPECT_TRUE(sol.isMatch("foo", "a*b*.*"));
+    EXPECT_TRUE(sol.isMatch("aacfoo", "a*cb*.*"));
 }
