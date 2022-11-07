@@ -18,6 +18,7 @@ public:
 int main(int argc, char** argv) {
     auto sol = Solution();
 
-    auto data = vector<vector<int>> { {0,1,0},{0,0,1},{1,1,1},{0,0,0} };
+    //auto data = vector<vector<int>> { {0,1,0},{0,0,1},{1,1,1},{0,0,0} };
+    auto data = vector<vector<int>> { {1,1},{1,0} };
     sol.gameOfLife(data);
 }
