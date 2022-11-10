@@ -13,7 +13,7 @@ project(GameOfLife)
 
 add_executable(GameOfLife
     main.cpp
-    board.cpp
+    #board.cpp
 )
 
 set_property(TARGET GameOfLife PROPERTY CXX_STANDARD 17)
