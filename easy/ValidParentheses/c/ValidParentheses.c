@@ -26,24 +26,21 @@ bool isMatch(char l, char r) {
 bool isValid(char * input){
     char *s = strdup(input);
     printf("\tbefore: '%s'\n", s);
-    
-    int l = strlen(s);
-    if ((l % 2) == 1) {
-        printf("\tinvalid: odd length!\n");
-        return false;
-    }
 
-    char* leading;
     char* trailing = s;
+    if (*trailing == '\0')
+        return true;
+    char* leading = s+1;
+    if (*leading == '\0' || isRight(*trailing))
+        return false;
     for (leading = s+1; *leading != '\0'; leading++) {
         printf("\ttrailing = '%c', leading = '%c'", *trailing, *leading);
         assert(isBracket(*leading));
         if (isMatch(*trailing, *leading)) {
             printf(" MATCH! removing both.");
             *trailing = '.';
-            if (--trailing > s)
-                while (*trailing == '.')
-                    trailing--;
+            while (trailing > s && *trailing == '.')
+                trailing--;
             *leading = '.';
         };
         if (isLeft(*leading)) {
@@ -58,6 +55,15 @@ bool isValid(char * input){
         printf("\n");
     }
     printf("\tafter:  '%s'\n", s);
+    printf("\ttrailing = '%c', leading = '%c'\n", *trailing, *leading);
+    printf("\t&s = 0x%X, &trailing = 0x%X, &leading = 0x%X\n", s, trailing, leading);
+
+    if (*trailing != '\.') {
+        printf("\tSUCKAGE - trailing = '%s', &trailing = 0x%X, &leading = 0x%X\n", trailing, trailing, s);
+        return false;
+    }
+    // Last chance... make sure length is even.
+    // return ((leading - trailing) %2) == 0;
     return true;
 }
 
@@ -71,12 +77,17 @@ int main(int argc, char**argv) {
     test("()[]{}", true, "leet example 2");
     test("()", true, "leet example 1");
     test("(]", false, "leet example 3");
+    test(")(){}", false, "leet example 89");
+    test("([]", false, "leet example 90");
+    test("(([]", false, "leet example 90.1");
     test("[]", true, "simple");
-    test("]", false, "single");
+    test("[", false, "single left");
+    test("]", false, "single right");
+    test("[][", false, "odd length > 1");
+    test("[[", false, "odd length > 1");
     test("", true, "empty string");
     test("[]{}", true, "serial");
     test("[{}]", true, "nested");
     test("[{]}", false, "overlapping");
     test("[{}()]", true, "nested serial");
-    // test("abcdef", false, "garbage in");
 }
